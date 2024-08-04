@@ -233,17 +233,23 @@ class Program
                     else
                     {
                         Console.WriteLine();
-                        if (pocet_pravych == pocet_naboju)
+                        if (pocet_pravych == prave_tupe.Count)
                         {
                             Console.WriteLine("Dealer střelil tebe");
+                            Console.ForegroundColor= ConsoleColor.DarkRed;
+                            Console.WriteLine("Ostrý náboj");
+                            Console.ResetColor();
                             srdce_hrace--;
                             prave_tupe.RemoveAt(vyber_naboje);
                             pocet_pravych--;
                             kolo = true;
                         }
-                        else if (pocet_tupych == pocet_naboju)
+                        else if (pocet_tupych == prave_tupe.Count)
                         {
                             Console.WriteLine("Dealer střelil sebe");
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("Tupý náboj");
+                            Console.ResetColor();
                             prave_tupe.RemoveAt(vyber_naboje);
                             pocet_tupych--;
                             kolo = true;
