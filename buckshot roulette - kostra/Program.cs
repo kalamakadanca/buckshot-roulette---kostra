@@ -18,6 +18,7 @@ class Program
         //chce se mi brecet pokazdy kdyz narazim na tuto cast kodu  /*
         bool dalsi_hra = false; //zobrazi se naboje pri dalsi hre <prechodna promenna>
         bool streleno_tupym = false; //jestli se clovek streli tupym, nezobrazi se zivoty <prechodna promenna>
+        bool nevalidni_odpoved = false;
         //                                                          */
 
         //volne k pouziti
@@ -168,7 +169,7 @@ class Program
                     {
                         Console.WriteLine("-----------------------------");
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        if (streleno_tupym == false)
+                        if (streleno_tupym == false && nevalidni_odpoved == false)
                         {
                             Console.WriteLine("Počet životů hráče: " + srdce_hrace);
                             Console.WriteLine("Počet životů dealera: " + srdce_dealera);
@@ -179,6 +180,8 @@ class Program
                         {
                             streleno_tupym = false;
                         }
+                        nevalidni_odpoved = false;
+                        Console.ResetColor();
                         Console.WriteLine("Chcete střelit sebe či dealera?");
                         Console.ForegroundColor= ConsoleColor.DarkGray;
                         String koho_strelit = Console.ReadLine().ToLower().Trim();
@@ -224,6 +227,9 @@ class Program
                                     kolo = false;
                                 }
                                 prave_tupe.RemoveAt(vyber_naboje);
+                                break;
+                            default:
+                                nevalidni_odpoved = true;
                                 break;
                         }
                     }
